@@ -65,24 +65,7 @@ describe('Typescript', () => {
                 enum1: ['val1','val2','val3','val4'],
                 enum2: ['val5','val6','val7','val8']
             }, options)
-            assert.equal(enumType,
-                'export type enum1 = \'val1\' | \'val2\' | \'val3\' | \'val4\';\n' +
-                'export type enum2 = \'val5\' | \'val6\' | \'val7\' | \'val8\';\n')
-        })
-    })
-    describe('generateEnumType', () => {
-        it('empty object', () => {
-            const enumType = Typescript.generateEnumType({}, options)
-            assert.equal(enumType,'')
-        })
-        it('with enumerations', () => {
-            const enumType = Typescript.generateEnumType({
-                enum1: ['val1','val2','val3','val4'],
-                enum2: ['val5','val6','val7','val8']
-            }, options)
-            assert.equal(enumType,
-                'export type enum1 = \'val1\' | \'val2\' | \'val3\' | \'val4\';\n' +
-                'export type enum2 = \'val5\' | \'val6\' | \'val7\' | \'val8\';\n')
+            assert.equal(enumType, "export enum enum1 {\n  val1 = 'val1',\n  val2 = 'val2',\n  val3 = 'val3',\n  val4 = 'val4'\n};\nexport enum enum2 {\n  val5 = 'val5',\n  val6 = 'val6',\n  val7 = 'val7',\n  val8 = 'val8'\n};\n")
         })
     })
     describe('generateTableTypes', () => {

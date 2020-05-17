@@ -44,9 +44,9 @@ export function generateEnumType (enumObject: any, options: Options) {
     let enumString = ''
     for (let enumNameRaw in enumObject) {
         const enumName = options.transformTypeName(enumNameRaw)
-        enumString += `export type ${enumName} = `
-        enumString += enumObject[enumNameRaw].map((v: string) => `'${v}'`).join(' | ')
-        enumString += ';\n'
+        enumString += `export enum ${enumName} {\n`
+        enumString += enumObject[enumNameRaw].map((v: string) => `  ${v} = '${v}'`).join(',\n')
+        enumString += '\n};\n'
     }
     return enumString
 }
