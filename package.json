@@ -1,6 +1,6 @@
 {
   "name": "nu-schemats",
-  "version": "4.6.0",
+  "version": "4.6.3",
   "description": "Generate typescript interface definitions from (postgres) SQL database schema",
   "keywords": [
     "postgres",
