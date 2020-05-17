@@ -29,7 +29,8 @@ export function generateTableInterface (tableNameRaw: string, tableDefinition: T
     const tableName = options.transformTypeName(tableNameRaw)
     let members = ''
     Object.keys(tableDefinition).map(c => options.transformColumnName(c)).forEach((columnName) => {
-        members += `${columnName}: ${tableName}Fields.${normalizeName(columnName, options)};\n`
+        let nullable = tableDefinition[columnName].nullable ? '?' : ''
+        members += `${columnName}${nullable}: ${tableName}Fields.${normalizeName(columnName, options)};\n`
     })
 
     return `
@@ -55,9 +56,8 @@ export function generateTableTypes (tableNameRaw: string, tableDefinition: Table
     let fields = ''
     Object.keys(tableDefinition).forEach((columnNameRaw) => {
         let type = tableDefinition[columnNameRaw].tsType
-        let nullable = tableDefinition[columnNameRaw].nullable ? '| null' : ''
         const columnName = options.transformColumnName(columnNameRaw)
-        fields += `export type ${normalizeName(columnName, options)} = ${type}${nullable};\n`
+        fields += `export type ${normalizeName(columnName, options)} = ${type};\n`
     })
 
     return `

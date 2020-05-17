@@ -42,14 +42,14 @@ describe('Typescript', () => {
             const tableInterface = Typescript.generateTableInterface('tableName', {
                 string: {udtName: 'name1', nullable: false},
                 number: {udtName: 'name2', nullable: false},
-                package: {udtName: 'name3', nullable: false}
+                package: {udtName: 'name3', nullable: true}
             }, options)
             assert.equal(tableInterface,
                 '\n' +
                 '        export interface tableName {\n' +
                 '        string: tableNameFields.string_;\n' +
                 'number: tableNameFields.number_;\n' +
-                'package: tableNameFields.package_;\n' +
+                'package?: tableNameFields.package_;\n' +
                 '\n' +
                 '        }\n' +
                 '    ')
@@ -118,8 +118,8 @@ describe('Typescript', () => {
             assert.equal(tableTypes,
                 '\n' +
                 '        export namespace tableNameFields {' +
-                '\n        export type col1 = string| null;' +
-                '\nexport type col2 = number| null;' +
+                '\n        export type col1 = string;' +
+                '\nexport type col2 = number;' +
                 '\n' +
                 '\n        }' +
                 '\n    ')
