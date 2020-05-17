@@ -45,7 +45,7 @@ function buildHeader (db: Database, tables: string[], schema: string|null, optio
     `
 }
 
-export async function typescriptOfTable (db: Database|string, 
+export async function typescriptOfTable (db: Database|string,
                                          table: string,
                                          schema: string,
                                          options = new Options()) {
@@ -83,7 +83,7 @@ export async function typescriptOfSchema (db: Database|string,
     const interfaces = await Promise.all(interfacePromises)
         .then(tsOfTable => tsOfTable.join(''))
 
-    let output = '/* tslint:disable */\n\n'
+    let output = '/* eslint-disable @typescript-eslint/no-namespace,@typescript-eslint/class-name-casing */\n\n'
     if (optionsObject.options.writeHeader) {
         output += buildHeader(db, tables, schema, options)
     }
