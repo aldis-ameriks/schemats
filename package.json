@@ -1,6 +1,6 @@
 {
-  "name": "schemats",
-  "version": "3.0.3",
+  "name": "nu-schemats",
+  "version": "4.0.0",
   "description": "Generate typescript interface definitions from (postgres) SQL database schema",
   "keywords": [
     "postgres",
@@ -11,7 +11,7 @@
   "main": "./src/index.js",
   "types": "./src/index.d.ts",
   "scripts": {
-    "lint": "tslint --project tsconfig.json --type-check 'src/**/*.ts' 'test/**/*.test.ts' 'bin/**/*.ts' --exclude '**/*.d.ts'",
+    "lint": "tslint --project tsconfig.json --type-check 'src/**/*.ts' 'test/**/*.test.ts' 'bin/**/*.ts' --exclude '**/*.d.ts' --fix",
     "build": "tsc",
     "dependency-check": "dependency-check . --entry bin/schemats.js --missing --no-dev",
     "test": "npm run lint && npm run build && npm run dependency-check && mocha",
@@ -25,10 +25,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/sweetiq/schemats.git"
+    "url": "https://github.com/aldis-ameriks/schemats.git"
   },
   "bugs": {
-    "url": "https://github.com/sweetiq/schemats/issues"
+    "url": "https://github.com/aldis-ameriks/schemats/issues"
   },
   "author": "Mengxuan Xia <xiamx2004@gmail.com>",
   "contributors": [
